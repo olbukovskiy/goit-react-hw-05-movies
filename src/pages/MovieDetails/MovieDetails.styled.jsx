@@ -57,7 +57,8 @@ export const MovieDetailsList = styled.ul`
 `;
 
 export const MovieDetailsListItem = styled.li`
-  font-size: 20px;
+  font-size: 28px;
+  text-decoration: underline;
   font-weight: 500;
   line-height: 1.5;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
