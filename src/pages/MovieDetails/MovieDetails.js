@@ -1,4 +1,4 @@
-import { useState, useMemo, Suspense } from 'react';
+import { useState, Suspense, useEffect } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 
 import {
@@ -33,13 +33,11 @@ export function MovieDetails() {
 
   const backLinkHref = location.state?.from ?? '/';
 
-  useMemo(
-    () =>
-      MoviesAPI.searchMovieDetails(movieId).then(response =>
-        setMovieDetails(response.data)
-      ),
-    [movieId]
-  );
+  useEffect(() => {
+    MoviesAPI.searchMovieDetails(movieId).then(response =>
+      setMovieDetails(response.data)
+    );
+  }, [movieId]);
 
   return (
     <>
@@ -86,10 +84,14 @@ export function MovieDetails() {
                 </MovieDetailsInfo>
                 <MovieDetailsList>
                   <MovieDetailsListItem>
-                    <Link to="cast">Cast</Link>
+                    <Link to="cast" state={{ from: backLinkHref }}>
+                      Cast
+                    </Link>
                   </MovieDetailsListItem>
                   <MovieDetailsListItem>
-                    <Link to="reviews">Reviews</Link>
+                    <Link to="reviews" state={{ from: backLinkHref }}>
+                      Reviews
+                    </Link>
                   </MovieDetailsListItem>
                 </MovieDetailsList>
               </MovieDetailsWrapper>
