@@ -20,7 +20,11 @@ export function Cast() {
     <Fragment>
       {cast && (
         <div>
-          <CastList cast={cast} />
+          {cast.length === 0 ? (
+            <div>We don't have any information about this movie crew</div>
+          ) : (
+            <CastList cast={cast} />
+          )}
         </div>
       )}
     </Fragment>
