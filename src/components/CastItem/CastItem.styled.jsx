@@ -11,7 +11,7 @@ export const CastThumb = styled.div`
 
 export const CastItemPictureThumb = styled.div`
   position: relative;
-  height: 320px;
+  height: 370px;
 `;
 
 export const CastItemTextThumb = styled.div`
